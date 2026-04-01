@@ -6,6 +6,8 @@ interface SquareProns {
 	value: string | null;
 	onSquareClick: () => void; // Must be a callable function that returns void
 }
+
+type SquareType = ("X"|"O"|null)
 function Square({ value, onSquareClick }: SquareProns) {
 	return (
 		<button type="button" className="square" onClick={onSquareClick}>
@@ -18,7 +20,7 @@ export default function Board() {
 	// useState returns an Array contains two values:
 	// - value for current state: All filled by null
 	// - A function to set value: setSquares
-	const [squares, setSquares] = useState<("X" | "O" | null)[]>(
+	const [squares, setSquares] = useState<SquareType[]>(
 		Array(9).fill(null),
 	);
 	// Firxt is "X"
@@ -51,8 +53,7 @@ export default function Board() {
 		setSquares(nextSquares);
 	}
 
-	// biome-ignore lint/suspicious/noExplicitAny: < >
-	function calculateWinner(squares: any): string | null {
+	function calculateWinner(squares: SquareType[]): string | null {
 		const lines = [
 			[0, 1, 2],
 			[3, 4, 5],
