@@ -4,9 +4,15 @@ import "./App.css";
 
 import App from "./App";
 
-const root = createRoot(document.getElementById("root"));
-root.render(
-	<StrictMode>
-		<App />
-	</StrictMode>,
-);
+const container = document.getElementById("root");
+if (container !== null) {
+	const root = createRoot(container);
+	root.render(
+		<StrictMode>
+			<App />
+		</StrictMode>,
+	);
+}
+else {
+	console.error("root element not found, please check `index.html`")
+}
