@@ -12,7 +12,6 @@ if (container !== null) {
 			<App />
 		</StrictMode>,
 	);
-}
-else {
-	console.error("root element not found, please check `index.html`")
+} else {
+	console.error("root element not found, please check `index.html`");
 }
